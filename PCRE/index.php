@@ -7,7 +7,7 @@
 </head>
 <body>
 <div style="position: absolute;">
-    <img src="../images/1.jpg" alt="仪仪画像" height="500" width="500">
+    <img src="../images/1.jpg" alt="仪仪画像" title="仪仪画像" height="500" width="500">
 </div>
 <div style="position: relative;"
 <p>服务器将保存你的草稿哦Qwq</p>
