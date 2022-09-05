@@ -35,4 +35,3 @@ if($_SERVER["REMOTE_ADDR"]==='127.0.0.1'){
 }else{
     echo "亲爱的用户IP：".$_SERVER["REMOTE_ADDR"]."</br>为什么不试试自作自受？";
 }
-//$arg = '127.0.0.1\' -v -d id=1';
