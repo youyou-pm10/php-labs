@@ -23,7 +23,7 @@
 </html>
 <?php
 $contents = $_POST['contents'];
-$name = $_POST['name'];
+$name = is_array($_POST['name'])?Null:$_POST['name'];
 function waf($str){
     if(!preg_match('/^.*\.php[\s\S]?/i',$str)){
         return True;
