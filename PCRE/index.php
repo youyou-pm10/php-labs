@@ -37,6 +37,7 @@ if(!empty($name) && !empty($contents)) {
         echo '本服务器不是apache支持！你仔细看看';
         highlight_file(__FILE__);
     }elseif (waf($name)) {
+        $name='cache_'.$name;
         file_put_contents($name, $contents);
     }else {
         die('Hacker!!!');
