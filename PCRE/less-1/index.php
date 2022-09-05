@@ -7,7 +7,7 @@
 </head>
 <body>
 <div style="position: absolute;">
-    <img src="../images/1.jpg" alt="仪仪画像" title="仪仪画像" height="500" width="500">
+    <img src="../../images/1.jpg" alt="仪仪画像" title="仪仪画像" height="500" width="500">
 </div>
 <div style="position: relative;"
 <p>服务器将保存你的草稿哦Qwq</p>
@@ -37,7 +37,8 @@ if(!empty($name) && !empty($contents)) {
         echo '本服务器不是apache支持！你仔细看看';
         highlight_file(__FILE__);
     }elseif (waf($name)) {
-        $name='cache_'.$name;
+        $name='cache_'.rand(100,999).substr($name, 0,5);
+        echo "你的草稿<a href='./$name'>在这</a>";
         file_put_contents($name, $contents);
     }else {
         die('Hacker!!!');
