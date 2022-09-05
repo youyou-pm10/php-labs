@@ -1,3 +1,22 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>
+        浏览器
+    </title>
+</head>
+<body>
+<div style="position: absolute;">
+    <img src="../../images/1.jpg" alt="仪仪画像" title="仪仪画像" height="500" width="500">
+</div>
+<div style="position: relative;"
+<p>服务器将作为你的浏览器哦Qwq</p>
+<form action="index.php" method="POST">
+    访问网址/ip：<input type="text" id="cmd" name="cmd">
+    <input type="submit">
+</form>
+</body>
+</html>
 <?php
 if(!empty($_POST['cmd'])){
     $cmd = escapeshellcmd(escapeshellarg($_POST['cmd']));
