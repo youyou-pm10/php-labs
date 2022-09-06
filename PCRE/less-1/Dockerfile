@@ -1,3 +1,5 @@
 FROM drud/nginx-php56
 
-COPY ./index.php /var/www/html && ../../images/1.jpg /var/www/html
+COPY .  /var/www/html
+
+RUN chmod -R 777 /var/www/html
