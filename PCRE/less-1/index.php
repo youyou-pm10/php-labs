@@ -22,6 +22,7 @@
 </body>
 </html>
 <?php
+error_reporting(0);
 $contents = $_POST['contents'];
 $name = is_array($_POST['name'])?Null:$_POST['name'];
 function waf($str){
