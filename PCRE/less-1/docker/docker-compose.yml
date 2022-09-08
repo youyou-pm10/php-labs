@@ -1,0 +1,13 @@
+version: "3"
+services: 
+  php-fpm:
+    image: dandarie/php-fpm5.6
+    volumes: 
+      - "./www:/usr/share/nginx/www"
+  nginx:
+    image: nginx
+    ports: 
+      - "80:80"
+    volumes: 
+      - "./default.conf:/etc/nginx/conf.d/default.conf"
+
