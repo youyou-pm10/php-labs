@@ -36,8 +36,9 @@ if($mode == '0'){
             $serect['number']++;
             exec($cmd);
     }
-}else{
+}elseif($mode == '1'){
     echo '</br>hello,the user!We may change the mode to repaie the server,please keep it unchanged';
+}else{
     header('refresh:5;url=index.php?mode=1');
     exit;
 }
