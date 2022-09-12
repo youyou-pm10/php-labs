@@ -10,10 +10,12 @@ if(isset($_COOKIE['serect'])){
 if(empty($mode)){
     $url = parse_url($_SERVER['REQUEST_URI']);
     parse_str($url['query']);
-    echo 'Your mode is the guest!';
+    if(empty($mode)) {
+        echo 'Your mode is the guest!';
+    }
 }
 
-if($mode = 0){
+if($mode == '0'){
     if($serect['serect'] === md5('test')){
         $serect = md5('test'.$config['serect']);
         }
