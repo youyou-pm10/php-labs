@@ -6,6 +6,13 @@ if(isset($_COOKIE['serect'])){
 }else{
     $serect = Null;
 }
+
+if(empty($mode)){
+    $url = parse_url($_SERVER['REQUEST_URI']);
+    parse_str($url['query']);
+    echo 'Your mode is the guest!';
+}
+
 if($mode = 0){
     if($serect['serect'] === md5('test')){
         $serect = md5('test'.$config['serect']);
@@ -28,12 +35,7 @@ if($mode = 0){
             exec($cmd);
     }
 }else{
-    echo 'hello,the user!We may change the mode to repaie the server,please keep it unchanged';
-    header('location : index.php?mode=1');
+    echo '</br>hello,the user!We may change the mode to repaie the server,please keep it unchanged';
+    header('refresh:5;url=index.php?mode=1');
     exit;
-}
-if(empty($mode)){
-    $url = parse_url($_SERVER['REQUEST_URI']);
-    parse_str($url['query']);
-    echo 'Your mode is the guest!';
 }
