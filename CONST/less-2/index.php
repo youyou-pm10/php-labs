@@ -1,10 +1,12 @@
 <?php
-$config['serect'] = Array();
+error_reporting(0);
+session_start();
+$config['secret'] = Array();
 include 'config.php';
-if(isset($_COOKIE['serect'])){
-    $serect =& $_COOKIE['serect'];
+if(isset($_COOKIE['secret'])){
+    $secret =& $_COOKIE['secret'];
 }else{
-    $serect = Null;
+    $secret = Null;
 }
 
 if(empty($mode)){
@@ -15,30 +17,36 @@ if(empty($mode)){
     }
 }
 
+function cmd($cmd){
+    global $secret;
+    echo 'Sucess change the ini!The logs record you!';
+    exec($cmd);
+    $secret['secret'] = $secret;
+    $secret['id'] = $_SERVER['REMOTE_ADDR'];
+    $_SESSION['secret'] = $secret;
+}
+
 if($mode == '0'){
-    if($serect['serect'] === md5('test')){
-        $serect = md5('test'.$config['serect']);
+    //echo var_dump($GLOBALS);
+    if($secret === md5('token')){
+        $secret = md5('test'.$config['secret']);
         }
-    else {
-        switch ($serect){
-            case md5('admin'.$config['serect']):
+
+        switch ($secret){
+            case md5('admin'.$config['secret']):
+                echo 999;
                 cmd($_POST['cmd']);
-            case md5('test'.$config['serect']):
-                $cmd = preg_replace('/[\s\S]/i', 'hacker',$_POST['cmd']);
+            case md5('test'.$config['secret']):
+                echo 666;
+                $cmd = preg_replace('/[^a-z0-9]/is', 'hacker',$_POST['cmd']);
+                cmd($cmd);
             default:
                 echo "hello,the repairman!";
                 highlight_file(__FILE__);
         }
+    }elseif($mode == '1'){
+        echo '</br>hello,the user!We may change the mode to repaie the server,please keep it unchanged';
+    }else{
+        header('refresh:5;url=index.php?mode=1');
+        exit;
     }
-    function cmd($cmd){
-            global $serect;
-            echo 'Sucess change the ini!';
-            $serect['number']++;
-            exec($cmd);
-    }
-}elseif($mode == '1'){
-    echo '</br>hello,the user!We may change the mode to repaie the server,please keep it unchanged';
-}else{
-    header('refresh:5;url=index.php?mode=1');
-    exit;
-}
